@@ -1,54 +1,66 @@
-// ///<reference types="cypress"/>
-// class customerDetailsPage {
+///<reference types="cypress"/>
+class NewComputerPage {
 
-//     getPageHeading() {
-//         return cy.get('.ui-core-Text');
-//     }
+    getTitle() {
+        return cy.title();
+    }
 
-//     getResidentialHeading() {
-//         return cy.get('.css-joa6mv h6.ui-core-Text');
-//     }
+    getPageHeading() {
+        return cy.get('#main h1');
+    }
 
-//     getResidentialAddress() {
-//         return cy.get('.css-joa6mv h5.ui-core-Text');
-//     }
+    getComputerName(){
+        return cy.get('#name');
+    }
 
-//     clickStartWorkFlow(){
-//         return cy.get('button.ui-core-Button.css-swn9wc').focus().click();
-//     }
+    getIntroduced(){
+        return cy.get('#introduced');
+    }
 
-//     clickEdit(){
-//         return cy.get('button.ui-core-Button.css-15hvmtw').focus().click();
-//     }
+    getDiscontinued(){
+        return cy.get('#discontinued');
+    }
 
-//     getBillingAddress(){
-//         return cy.get('.css-i0x7xb');   
-//     }
+    getDiscontinued(){
+        return cy.get('#discontinued');
+    }
 
-//     getCustomerName(){
-//         return cy.get('.css-z32tht + .css-knfhfe .css-wcquo4 h6');
-//     }
+    getResidentialHeading() {
+        return cy.get('.css-joa6mv h6.ui-core-Text');
+    }
 
-//     getEmail(){
-//         return cy.get('div.css-wcquo4 > p:nth-child(2)');
-//     }
+    getCompany(){
+        return cy.get('#company');
+    }
 
-//     getMobileNo(){
-//         return cy.get('div.css-wcquo4 > p:nth-child(3)');
-//     }
+    getCreateBtn(){
+        return cy.get('#main > form > div > input');
+    }
 
-//     getLandlineNo(){
-//         return cy.get('div.css-wcquo4 > p:nth-child(4)');
-//     }
+    getCancelBtn(){
+        return cy.get('#main > form > div > a');
+    }
 
-//     clickPriorityServiceRegister(){
-//         return cy.get('.css-1ygjtqz button.ui-core-Button').focus().click();;
-//     }
+    clickCreate(){
+        return cy.get('#main > form > div > input').focus().click();
+    }
 
-//     getContactHistoryHeading(){
-//         return cy.get('h4.ui-core-Text');
-//     }
+    clickCancel(){
+        return cy.get('#main > form > div > a').focus().click();
+    }
 
-// }
+    getComputerNameErr(){
+        return cy.get('#name+span');
+    }
 
-// export default customerDetailsPage;
+    getIntroducedErr(){
+        return cy.get('#introduced+span')
+    }
+
+    getIntroducedErr(){
+        return cy.get('#introduced+span')
+    }
+
+}
+
+export default NewComputerPage;

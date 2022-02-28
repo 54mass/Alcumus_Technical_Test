@@ -1,63 +1,65 @@
-// import { Given, Then } from "cypress-cucumber-preprocessor/steps";
-// import customersearchPage from '../../../../support/pageObject/customersearchPage';
+import { Given, Then } from "cypress-cucumber-preprocessor/steps";
+import newComputerPage from '../../../../support/pageObject/NewComputerPage';
 
 
-// let url = Cypress.config().baseUrl;
+let url = Cypress.config().baseUrl;
 
-// const searchPage = new customersearchPage();
+const newComputer = new newComputerPage();
 
+Given(/^I am on add a new computer page$/, (  ) =>{
+    cy.visit(url+'/new');
+} );
 
-// Given(/^I am on brook '(.*)' page$/, ( SearchPageUrl ) =>{
-//     cy.visit(url+SearchPageUrl);
-// } );
-
-// Given(/^I should see page heading '(.*)'$/, ( PageHeading ) =>{
-//     searchPage.getPageHeading().contains(PageHeading);
-// } );
-
-// Given(/^I should see search text box$/, (  ) =>{
-// 	searchPage.getSearchTextField().should('have.value', '');
-//     searchPage.getSearchTextField().should('not.be.disabled');
-//     searchPage.getSearchTextField().should('be.visible');
-// } );
-
-// Given(/^I should see search button$/, (  ) =>{
-//     searchPage.getSearchButton().should('not.be.disabled');
-//     searchPage.getSearchButton().should('be.visible');
-// } );
-
-// When(/^I enter '(.*)' customer reference number$/, ( SearchValue ) =>{
-//     searchPage.getSearchTextField().type(SearchValue);
-// } );
-
-// Given(/^I click search button$/, (  ) =>{
-//     searchPage.clickSearchButton();
-// } );
-
-// Then(/^I should get error message '(.*)'$/, ( ErrorMsg ) =>{
-//     searchPage.getAlertDetails().should('be.visible');
-//     searchPage.getAlertDetails().contains(ErrorMsg);
-// } );
-
-// Then(/^I should not get error message$/, (  ) =>{
-//     searchPage.getAlertDetails().should('not.exist');
-// } );
-
-// Then(/^I should see table with heading '(.*)', '(.*)', '(.*)', '(.*)'$/, ( Customer, Property, Name, Email ) =>{
-//     searchPage.getCustomerHeading().should('have.text',Customer);
-//     searchPage.getPropertyHeading().should('have.text',Property);
-//     searchPage.getNameHeading().should('have.text',Name);
-//     searchPage.getEmailHeading().should('have.text',Email);
-// } );
+Then(/^I should see '(.*)' heading$/, ( heading ) =>{
+    newComputer.getPageHeading().should('have.text',heading );
+} );
 
 
-// Then(/^I should see valid search result '(.*)','(.*)','(.*)','(.*)'$/, ( CustomerRef, Property, CustomerName, CustomerEmail ) =>{
-//     searchPage.getCustmorNumber().should('have.text',CustomerRef);
-//     searchPage.getProperty().should('have.text',Property);
-//     searchPage.getCustomerName()
-//     .should('have.text',CustomerName)
-//     searchPage.getCustomerEmail().should('have.text',CustomerEmail);
-// } );
+Then(/^I should see Computer name text box$/, (  ) =>{
+    newComputer.getComputerName().should('exist');
+	newComputer.getComputerName().should('be.visible');
+} );
+
+Then(/^I should see Introduced date text box$/, (  ) =>{
+	newComputer.getIntroduced().should('exist');
+	newComputer.getIntroduced().should('be.visible');
+} );
+
+Then(/^I should see Discontinued date text box$/, (  ) =>{
+	newComputer.getDiscontinued().should('exist');
+	newComputer.getDiscontinued().should('be.visible');
+} );
+
+Then(/^I should see Company dropdown box$/, (  ) =>{
+	newComputer.getCompany().should('exist');
+	newComputer.getCompany().should('be.visible');
+} );
+
+Then(/^I should see Create this computer button$/, (  ) =>{
+	newComputer.getCreateBtn().should('exist');
+	newComputer.getCreateBtn().should('be.visible');
+} );
+
+Then(/^I should see Cancel button$/, (  ) =>{
+    newComputer.getCancelBtn().should('exist');
+	newComputer.getCancelBtn().should('be.visible');
+} );
+
+When(/^I enter space in Introduced text box$/, (  ) =>{
+    newComputer.getIntroduced().type(" ");
+} );
+
+When(/^I press Create this computer without entering any value$/, (  ) =>{
+    newComputer.clickCreate();
+} );
+
+Then(/^I should see error messages for computer name and Introduced$/, (  ) =>{
+    newComputer.getComputerNameErr()
+    .should('have.text','Failed to refine type : Predicate isEmpty() did not fail.');
+    newComputer.getIntroducedErr()
+    .should('have.text',"Failed to decode date : java.time.format.DateTimeParseException: Text ' ' could not be parsed at index 0");
+} );
+    
 
 
 

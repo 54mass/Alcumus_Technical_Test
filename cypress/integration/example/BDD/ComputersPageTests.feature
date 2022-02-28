@@ -1,6 +1,6 @@
-Feature: brook Home Page
+Feature: Computer Database Home Page
 
-  I want to open a search engine
+  I want to open a search and view computer details
   
   Background: I am on home page
     Given I am on computer database homepage

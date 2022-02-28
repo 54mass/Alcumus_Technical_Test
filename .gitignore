@@ -11,3 +11,4 @@ yarn.lock
 # cypress recordings during a test run are temporary files
 /cypress/videos/
 /cypress/screenshots/
+/cypress/reports/
