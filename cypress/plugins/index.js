@@ -22,7 +22,7 @@ const path = require('path');
 function getConfigurationByFile(file) {
   const pathToConfigFile = path.resolve(
     '..',
-    'cypress/cypress/configFiles',
+    'Alcumus_Technical_Test/cypress/configFiles',
     `${file}.json`
   );
 
