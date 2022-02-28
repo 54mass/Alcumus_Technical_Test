@@ -1,10 +1,15 @@
 import { Given, Then } from "cypress-cucumber-preprocessor/steps";
 import newComputerPage from '../../../../support/pageObject/NewComputerPage';
-
+import ComputersPage from '../../../../support/pageObject/ComputersPage';
 
 let url = Cypress.config().baseUrl;
 
 const newComputer = new newComputerPage();
+const Computers = new ComputersPage();
+
+const uuid = () => Cypress._.random(0, 1e6);
+const id = uuid();
+const testname = `testname${id}`;
 
 Given(/^I am on add a new computer page$/, (  ) =>{
     cy.visit(url+'/new');
@@ -60,10 +65,18 @@ Then(/^I should see error messages for computer name and Introduced$/, (  ) =>{
     .should('have.text',"Failed to decode date : java.time.format.DateTimeParseException: Text ' ' could not be parsed at index 0");
 } );
     
+When(/^I add a new Computer name in text box$/, (  ) =>{
+    newComputer.getComputerName().type(testname);
+} );
 
+Then(/^I press create this computer button$/, (  ) =>{
+    newComputer.clickCreate();
+} );
 
+Then(/^I should redirect to computers page$/, (  ) =>{
+    Computers.getComputerCountHeading().should('be.visible');
+} );
 
-
-
-
-
+Then(/^I should see Computer has been created messages$/, (  ) =>{
+    Computers.getSuccessMsg().contains("Computer "+testname+" has been created")
+} );

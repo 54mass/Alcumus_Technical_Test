@@ -18,3 +18,9 @@ Feature: New Computer Page
     And I press Create this computer without entering any value
     Then I should see error messages for computer name and Introduced
 
+@integration @focus 
+  Scenario: Add a new computer
+    When I add a new Computer name in text box
+    And I press create this computer button
+    Then I should redirect to computers page
+    And I should see Computer has been created messages

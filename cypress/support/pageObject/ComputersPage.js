@@ -56,5 +56,9 @@ class ComputersPage {
     getColumn4(){
         return cy.get('th.col-company.header a');
     }
+
+    getSuccessMsg(){
+        return cy.get('#main > div.alert-message.warning')
+    }
 }
 export default ComputersPage;
