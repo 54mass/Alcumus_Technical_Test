@@ -1,0 +1,14 @@
+{
+    "reporter": "cypress-mochawesome-reporter",
+    "chromeWebSecurity": false,
+    "reporterOptions":{
+        "overwrite:":false,
+        "html":false,
+        "json": true,
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "charts": true
+    },
+    "video": false,
+    "testFiles":"**/*.feature"
+}

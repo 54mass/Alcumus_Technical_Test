@@ -1,0 +1,6 @@
+{
+    "baseUrl": "https://computer-database.gatling.io/computers",
+    "env": {
+      "environment": "development"
+    }
+  }
