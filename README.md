@@ -1,5 +1,5 @@
 # Alcumus_Technical_Test
-install Nodejs latest version https://nodejs.org/en/download/
+install Nodejs latest version https://nodejs.org/en/download/ (if not already installed)
 
 clone the repo
 
